@@ -9,7 +9,7 @@ import os
 import pickle
 import time
 
-import faiss
+#import faiss
 import numpy as np
 from sklearn.metrics.cluster import normalized_mutual_info_score
 import torch
@@ -98,9 +98,12 @@ def main(args):
             checkpoint = torch.load(args.resume)
             args.start_epoch = checkpoint['epoch']
             # remove top_layer parameters from checkpoint
+            list1 = []
             for key in checkpoint['state_dict']:
                 if 'top_layer' in key:
-                    del checkpoint['state_dict'][key]
+                    list1.append(key)
+            for key in list1:
+                del checkpoint['state_dict'][key]
             model.load_state_dict(checkpoint['state_dict'])
             optimizer.load_state_dict(checkpoint['optimizer'])
             print("=> loaded checkpoint '{}' (epoch {})"
@@ -119,8 +122,8 @@ def main(args):
     # preprocessing of data
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
-    tra = [transforms.Resize(256),
-           transforms.CenterCrop(224),
+    tra = [transforms.Resize(78),
+           transforms.CenterCrop(64),
            transforms.ToTensor(),
            normalize]
 
@@ -259,7 +262,7 @@ def train(loader, model, crit, opt, epoch):
                 'optimizer' : opt.state_dict()
             }, path)
 
-        target = target.cuda(async=True)
+        target = target.cuda(non_blocking=True)
         input_var = torch.autograd.Variable(input_tensor.cuda())
         target_var = torch.autograd.Variable(target)
 
@@ -267,7 +270,8 @@ def train(loader, model, crit, opt, epoch):
         loss = crit(output, target_var)
 
         # record loss
-        losses.update(loss.data[0], input_tensor.size(0))
+        #losses.update(loss.data[0], input_tensor.size(0))
+        losses.update(loss.item(), input_tensor.size(0))
 
         # compute gradient and do SGD step
         opt.zero_grad()
@@ -300,7 +304,7 @@ def compute_features(dataloader, model, N):
     for i, (input_tensor, _) in enumerate(dataloader):
         input_var = torch.autograd.Variable(input_tensor.cuda(), volatile=True)
         aux = model(input_var).data.cpu().numpy()
-
+        
         if i == 0:
             features = np.zeros((N, aux.shape[1]), dtype='float32')
 
