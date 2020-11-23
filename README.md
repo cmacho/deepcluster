@@ -11,7 +11,8 @@ Split the 64 classes from the training set of mini imagenet into one group of 12
 
 Update the paths for the mini imagenet directories in [main.sh](main.sh) and [main_constrained.sh](main_constrained_dc.sh) as appropriate. 
 
-Run `main.sh` in order to run DeepCluster and `main_constrained.sh` in order to run Constrained DeepCluster.
+Run `sample_labeled_tasks.sh` in order to create the file `labeled_tasks.npy`.
+Then run `main.sh` in order to run DeepCluster and `main_constrained.sh` in order to run Constrained DeepCluster.
 
 Note the requirements below. This should be run with python 3 because the latest version of sklearn is much faster than versions that are available for python 2.
 
