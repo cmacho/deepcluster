@@ -19,8 +19,6 @@ DIR_LABELED="/home/cle_macho/mini_imagenet/train_split/labeled_use"
 
 mkdir -p ${EXP}
 
-python load_small_num_tasks_and_save_to_file.py --small_train_data_path ${DIR_LABELED}
-
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main_constrained_dc.py ${DIR} --exp ${EXP} --arch ${ARCH} \
   --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --sobel --verbose --workers ${WORKERS} --epochs 500 \
   --reassign 3 --checkpoints 150000

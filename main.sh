@@ -25,3 +25,9 @@ CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} compute_deepcluster_features.py ${DIR} --exp ${EXP} --arch ${ARCH} \
   --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --sobel --verbose --workers ${WORKERS}
 
+CUDA_VISIBLE_DEVICES=0 ${PYTHON} compute_deepcluster_features_constrained_dc.py ${DIR} --exp ${EXP} --arch ${ARCH} \
+  --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --sobel --verbose --workers ${WORKERS}
+
+mv ${EXP}/embedding_labeled.npy ${EXP}/embedding_standard_labeled.npy
+mv ${EXP}/embedding_unlabeled.npy ${EXP}/embedding_standard_unlabeled.npy
+rm ${EXP}/images_unlabeled.npy
