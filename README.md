@@ -1,9 +1,19 @@
-# Deep Clustering for Unsupervised Learning of Visual Features
+# DeepCluster and Constrained DeepCluster
 
-## This branch 
-This branch uses sklearn instead of faiss and parameters are adjusted to work with mini imagenet.
+See .... for context and to find out what this is about.
 
-Note the requirements below. This should be run with python 3.
+## Usage:
+
+Download the mini imagenet dataset e.g. from the links that you can find here:
+https://github.com/yaoyao-liu/mini-imagenet-tools
+
+Split the 64 classes from the training set of mini imagenet into one group of 12 classes and one group of 52 classes. The directory structure for mini imagenet should then be as shown [mini_imagenet_directory_structure.txt](mini_imagenet_directory_structure.txt)
+
+Update the paths for the mini imagenet directories in [main.sh](main.sh) and [main_constrained.sh](main_constrained_dc.sh) as appropriate. 
+
+Run `main.sh` in order to run DeepCluster and `main_constrained.sh` in order to run Constrained DeepCluster.
+
+Note the requirements below. This should be run with python 3 because the latest version of sklearn is much faster than versions that are available for python 2.
 
 ## Requirements
 

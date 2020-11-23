@@ -13,7 +13,6 @@ import torch
 import torch.utils.data as data
 import torchvision.transforms as transforms
 from sklearn.decomposition import PCA
-import kmeans
 from sklearn.cluster import KMeans
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True

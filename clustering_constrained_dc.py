@@ -13,7 +13,6 @@ import torch
 import torch.utils.data as data
 import torchvision.transforms as transforms
 from sklearn.decomposition import PCA
-import kmeans
 from constrained_kmeans import cluster_with_constraints
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
