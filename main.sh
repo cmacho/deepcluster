@@ -6,16 +6,22 @@
 #
 #!/bin/bash
 
-DIR="/datasets01/imagenet_full_size/061417/train"
+DIR="/home/cle_macho/mini_imagenet/train_split/unlabeled_use"
 ARCH="alexnet"
 LR=0.05
 WD=-5
-K=10000
-WORKERS=12
-EXP="/private/home/${USER}/test/exp"
-PYTHON="/private/home/${USER}/test/conda/bin/python"
+K=500
+WORKERS=4
+EXP="exp_standard"
+PYTHON="python"
+BATCH=32
 
 mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
-  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS}
+  --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --sobel --verbose --workers ${WORKERS} --epochs 500 \
+  --reassign 3 --checkpoints 150000
+  
+CUDA_VISIBLE_DEVICES=0 ${PYTHON} compute_deepcluster_features.py ${DIR} --exp ${EXP} --arch ${ARCH} \
+  --lr ${LR} --wd ${WD} --k ${K} --batch ${BATCH} --sobel --verbose --workers ${WORKERS}
+
