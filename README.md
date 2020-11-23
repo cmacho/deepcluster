@@ -11,7 +11,7 @@ https://github.com/yaoyao-liu/mini-imagenet-tools
 
 Split the 64 classes from the training set of mini imagenet into one group of 12 classes and one group of 52 classes. The directory structure for mini imagenet should then be as shown [mini_imagenet_directory_structure.txt](mini_imagenet_directory_structure.txt)
 
-Update the paths for the mini imagenet directories in [main.sh](main.sh) and [main_constrained.sh](main_constrained_dc.sh) as appropriate. 
+Update the paths for the mini imagenet directories in [main.sh](main.sh) and [main_constrained.sh](main_constrained_dc.sh) and [sample_labeled_tasks.sh](sample_labeled_tasks.sh) as appropriate. 
 
 Run `sample_labeled_tasks.sh` in order to create the file `labeled_tasks.npy`.
 Then run `main.sh` in order to run DeepCluster and `main_constrained.sh` in order to run Constrained DeepCluster.
