@@ -4,8 +4,6 @@ import argparse
 import os
 import pickle
 import time
-
-import faiss
 import numpy as np
 from sklearn.metrics.cluster import normalized_mutual_info_score
 import torch
