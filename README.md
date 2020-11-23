@@ -2,7 +2,7 @@
 
 This is adapted from the implementation of [DeepCluster](https://github.com/facebookresearch/deepcluster) by Facebook Research. 
 
-See [here](https://github.com/cmacho/Semi-Supervised-Meta-Learning) for context and to find out what this branch is about.
+See [my other repo](https://github.com/cmacho/Semi-Supervised-Meta-Learning) on Semi Supervised Meta Learning for context and to find out what this branch is about.
 
 ## Usage:
 
