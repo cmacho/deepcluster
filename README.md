@@ -9,7 +9,7 @@ See [my other repo](https://github.com/cmacho/Semi-Supervised-Meta-Learning) on 
 Download the mini imagenet dataset e.g. from the links that you can find here:
 https://github.com/yaoyao-liu/mini-imagenet-tools
 
-Split the 64 classes from the training set of mini imagenet into one group of 12 classes and one group of 52 classes. The directory structure for mini imagenet should then be as shown in [mini_imagenet_directory_structure.txt](mini_imagenet_directory_structure.txt)
+Split the 64 classes from the training set of mini imagenet into one group of 12 classes and one group of 52 classes. The directory structure for mini imagenet should then be as shown in [mini_imagenet_directory_structure.txt](mini_imagenet_directory_structure.txt). Each of the leaves in the tree shown here is a folder containing 600 images.
 
 Update the paths for the mini imagenet directories in [main.sh](main.sh) and [main_constrained.sh](main_constrained_dc.sh) and [sample_labeled_tasks.sh](sample_labeled_tasks.sh) as appropriate. 
 
